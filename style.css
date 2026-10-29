@@ -228,3 +228,86 @@ button { color: inherit; cursor: pointer; }
   }
     }
                
+
+/* Playground */
+.playground-hero { min-height: 460px; }
+.play-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.play-tab {
+  border: 1px solid var(--line); background: transparent; color: #999;
+  padding: 11px 14px; font-size: 11px; border-radius: 3px;
+}
+.play-tab:hover, .play-tab.active { background: #eee; color: #111; border-color: #eee; }
+.tool-panel {
+  background: #101010; border: 1px solid var(--line);
+  padding: 28px; border-radius: 4px; min-width: 0;
+}
+.tool-panel[hidden] { display: none; }
+.tool-heading { display: flex; align-items: start; justify-content: space-between; gap: 15px; }
+.tool-heading .eyebrow { margin-bottom: 10px; }
+.tool-heading h3 { font-size: 27px; letter-spacing: -1px; margin: 0; }
+.tool-counter { font-size: 9px; letter-spacing: 1px; color: #777; }
+.game-canvas {
+  display: block; width: 100%; height: auto; margin-top: 25px;
+  border: 1px solid #292929; border-radius: 3px; background: #0a0a0a;
+  touch-action: none;
+}
+.drawing-canvas {
+  display: block; width: 100%; height: auto; margin-top: 22px;
+  background: white; border-radius: 3px; border: 1px solid #444;
+  touch-action: none; cursor: crosshair;
+}
+.tool-controls, .draw-controls {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 17px;
+}
+.draw-controls label { display: flex; align-items: center; gap: 9px; font-size: 11px; color: #aaa; }
+.draw-controls input[type="color"] { width: 36px; height: 34px; border: 0; background: transparent; }
+.draw-controls input[type="range"] { width: 100px; accent-color: white; }
+.direction-pad { margin-top: 20px; display: grid; justify-items: center; gap: 5px; }
+.direction-pad div { display: flex; gap: 5px; }
+.direction-pad button {
+  width: 43px; height: 40px; background: #191919;
+  border: 1px solid #333; border-radius: 3px; font-size: 17px;
+}
+.direction-pad button:active { background: #eee; color: #111; }
+.tool-input, .tool-textarea {
+  display: block; width: 100%; padding: 13px; color: #eee;
+  background: #090909; border: 1px solid #303030; border-radius: 3px;
+  outline: none; font-size: 13px;
+}
+.tool-input:focus, .tool-textarea:focus { border-color: #777; }
+.tool-textarea { min-height: 180px; resize: vertical; line-height: 1.8; }
+.field-label { display: block; margin: 20px 0 9px; color: #888; font-size: 9px; letter-spacing: 1.5px; }
+.quote-preview {
+  white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.8;
+  padding: 22px; border-left: 2px solid #777; background: #151515;
+  margin: 25px 0; color: #ddd; min-height: 75px;
+}
+.game-status { color: #ccc; font-size: 13px; line-height: 1.8; }
+.tic-board {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 90px));
+  gap: 7px; margin: 22px 0;
+}
+.tic-board button {
+  width: 100%; aspect-ratio: 1; background: #171717;
+  border: 1px solid #333; border-radius: 3px; font-size: 35px;
+}
+.tic-board button:disabled { color: #eee; }
+.reflex-target {
+  display: grid; place-items: center; text-align: center;
+  width: 100%; min-height: 190px; margin-top: 22px; padding: 20px;
+  border: 1px solid #333; border-radius: 3px;
+  background: #191919; color: #ddd; font-size: 15px;
+  transition: background .1s, color .1s;
+}
+.reflex-target.ready { background: #f4f4f4; color: #090909; }
+.reflex-target.too-soon { background: #4a2020; color: white; }
+.guess-form { display: flex; gap: 10px; margin-top: 22px; }
+.guess-form .tool-input { flex: 1; min-width: 0; }
+@media (max-width: 620px) {
+  .tool-panel { padding: 18px; }
+  .tool-heading h3 { font-size: 24px; }
+  .tool-counter { font-size: 8px; }
+  .play-tab { padding: 10px; }
+  .guess-form { flex-direction: column; }
+  .draw-controls { align-items: center; }
+}
