@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Juuna Playground, kumpulan game kecil dan alat kreatif.">
+  <title>Playground | juuna.</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="./index.html">juuna<span>.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+    <nav id="navigation">
+      <a class="nav-link" href="./index.html">Home</a>
+      <a class="nav-link" href="./index.html#about">Tentang</a>
+      <a class="nav-link" href="./index.html#hobbies">Hobi</a>
+      <a class="nav-link active" href="./games.html">Playground</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero playground-hero">
+      <div class="hero-content">
+        <p class="eyebrow">JUUNA INTERACTIVE SPACE / 002</p>
+        <h1>Play.<br><span>Make things.</span></h1>
+        <p class="hero-description">Tempat mencoba hal random, membuat sesuatu, dan bermain sebentar tanpa harus mengunduh aplikasi tambahan.</p>
+        <div class="hero-actions">
+          <a href="#tools" class="button button-light">Explore playground ↓</a>
+          <a href="./index.html" class="button button-outline">← Kembali</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-ring ring-a"></div>
+        <div class="art-ring ring-b"></div>
+        <div class="art-core">P<span>.</span></div>
+      </div>
+    </section>
+
+    <section class="page-section content-section" id="tools">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / INTERACTIVE TOOLS</p><h2>Pilih aktivitas.</h2></div>
+        <span class="section-index">06 TOOLS</span>
+      </div>
+      <div class="play-tabs" id="playTabs">
+        <button class="play-tab active" data-tool="ball">01 / Ball</button>
+        <button class="play-tab" data-tool="draw">02 / Canvas</button>
+        <button class="play-tab" data-tool="words">03 / Words</button>
+        <button class="play-tab" data-tool="tic">04 / Tic-Tac-Toe</button>
+        <button class="play-tab" data-tool="reflex">05 / Reflex</button>
+        <button class="play-tab" data-tool="guess">06 / Number</button>
+      </div>
+
+      <article class="tool-panel" id="ball">
+        <div class="tool-heading"><div><p class="eyebrow">01 / PHYSICS PLAY</p><h3>Move the ball.</h3></div><span class="tool-counter">BALL_001</span></div>
+        <p class="muted">Sentuh atau seret bolanya. Gunakan tombol arah untuk menggerakkannya juga.</p>
+        <canvas id="ballCanvas" class="game-canvas" width="800" height="350" aria-label="Arena permainan bola"></canvas>
+        <div class="tool-controls">
+          <button class="button button-outline" id="ballReset">Reset posisi</button>
+          <span class="small-note">Drag / touch / arrow keys</span>
+        </div>
+        <div class="direction-pad">
+          <button data-dir="up" aria-label="Atas">↑</button>
+          <div><button data-dir="left" aria-label="Kiri">←</button><button data-dir="down" aria-label="Bawah">↓</button><button data-dir="right" aria-label="Kanan">→</button></div>
+        </div>
+      </article>
+
+      <article class="tool-panel" id="draw" hidden>
+        <div class="tool-heading"><div><p class="eyebrow">02 / CREATIVE STUDIO</p><h3>Draw something.</h3></div><span class="tool-counter">CANVAS_002</span></div>
+        <p class="muted">Gambar bebas, buat tanda tangan, atau bikin wallpaper sederhana.</p>
+        <canvas id="drawCanvas" class="drawing-canvas" width="1000" height="600" aria-label="Kanvas gambar"></canvas>
+        <div class="draw-controls">
+          <label>Warna <input id="drawColor" type="color" value="#111111"></label>
+          <label>Ukuran <input id="drawSize" type="range" min="1" max="40" value="5"></label>
+          <button class="button button-outline" id="eraserBtn">Eraser</button>
+          <button class="button button-outline" id="clearCanvas">Clear</button>
+          <button class="button button-light" id="downloadCanvas">Download PNG ↓</button>
+        </div>
+      </article>
+
+      <article class="tool-panel" id="words" hidden>
+        <div class="tool-heading"><div><p class="eyebrow">03 / WORD STUDIO</p><h3>Words worth keeping.</h3></div><span class="tool-counter">WORDS_003</span></div>
+        <label class="field-label" for="wordTitle">JUDUL</label>
+        <input id="wordTitle" class="tool-input" maxlength="100" placeholder="Contoh: untuk hari ini">
+        <label class="field-label" for="wordBody">TULISAN</label>
+        <textarea id="wordBody" class="tool-textarea" maxlength="5000" placeholder="Tulis pikiran, pesan, puisi, atau kalimatmu di sini..."></textarea>
+        <div class="tool-controls">
+          <span id="wordCount" class="small-note">0 / 5000</span>
+          <button class="button button-outline" id="copyWords">Copy text</button>
+          <button class="button button-light" id="downloadWords">Download TXT ↓</button>
+        </div>
+        <div class="quote-preview" id="wordPreview">Your words will appear here.</div>
+        <button class="button button-outline" id="saveWords">Simpan di perangkat</button>
+        <p class="small-note" id="wordStatus" aria-live="polite"></p>
+      </article>
+
+      <article class="tool-panel" id="tic" hidden>
+        <div class="tool-heading"><div><p class="eyebrow">04 / TWO PLAYER</p><h3>Tic-Tac-Toe.</h3></div><span class="tool-counter">GAME_004</span></div>
+        <p class="muted">Dua pemain, satu papan, tiga tanda berurutan untuk menang.</p>
+        <p id="ticStatus" class="game-status" aria-live="polite">Giliran X.</p>
+        <div id="ticBoard" class="tic-board">
+          <button data-cell="0" aria-label="Kotak 1"></button><button data-cell="1" aria-label="Kotak 2"></button><button data-cell="2" aria-label="Kotak 3"></button>
+          <button data-cell="3" aria-label="Kotak 4"></button><button data-cell="4" aria-label="Kotak 5"></button><button data-cell="5" aria-label="Kotak 6"></button>
+          <button data-cell="6" aria-label="Kotak 7"></button><button data-cell="7" aria-label="Kotak 8"></button><button data-cell="8" aria-label="Kotak 9"></button>
+        </div>
+        <button class="button button-outline" id="ticReset">New round ↻</button>
+      </article>
+
+      <article class="tool-panel" id="reflex" hidden>
+        <div class="tool-heading"><div><p class="eyebrow">05 / SPEED TEST</p><h3>Test your reflex.</h3></div><span class="tool-counter">GAME_005</span></div>
+        <p class="muted">Mulai permainan, tunggu sampai layar berubah putih, lalu klik secepat mungkin.</p>
+        <button id="reflexTarget" class="reflex-target">Tekan mulai untuk bermain</button>
+        <div class="tool-controls">
+          <button class="button button-light" id="reflexStart">Mulai permainan</button>
+          <span id="reflexResult" class="game-status" aria-live="polite">Best: belum ada catatan</span>
+        </div>
+      </article>
+
+      <article class="tool-panel" id="guess" hidden>
+        <div class="tool-heading"><div><p class="eyebrow">06 / LOGIC GAME</p><h3>Guess the number.</h3></div><span class="tool-counter">GAME_006</span></div>
+        <p class="muted">Tebak angka dari 1 sampai 100. Gunakan petunjuk untuk menemukan jawabannya.</p>
+        <form id="guessForm" class="guess-form">
+          <input id="guessInput" class="tool-input" type="number" min="1" max="100" step="1" required placeholder="Masukkan angka" aria-label="Tebakan angka">
+          <button class="button button-light" type="submit">Tebak ↗</button>
+        </form>
+        <p id="guessStatus" class="game-status" aria-live="polite">Siap? Angka rahasia sudah dipilih.</p>
+        <p id="guessAttempts" class="small-note">Percobaan: 0</p>
+        <button id="guessReset" class="button button-outline">Angka baru ↻</button>
+      </article>
+    </section>
+
+    <section class="final-cta">
+      <p class="eyebrow">END OF THIS LITTLE SPACE</p>
+      <h2>Keep creating.<br><span>Even the smallest things.</span></h2>
+      <a class="button button-light" href="./index.html">Back to Juuna ↗</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo" href="./index.html">juuna<span>.</span></a>
+    <span>Playground / 002</span>
+    <a href="./index.html">HOME ↗</a>
+    <span>© <span id="year"></span> JUUNA</span>
+  </footer>
+  <script src="./script.js"></script>
+</body>
+        </html>
+          
